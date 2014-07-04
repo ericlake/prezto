@@ -12,3 +12,14 @@ fi
 
 # Customize to your needs...
 
+if [[ -r ~/.aliasrc ]]; then
+  . ~/.aliasrc
+fi
+
+if [[ -r ~/.functionsrc ]]; then
+  . ~/.functionsrc
+fi
+
+if [[ -r ~/bin/global-auth-info.py ]]; then
+  export TOKEN=$(global-auth-info.py -e prod-us -v)
+fi
