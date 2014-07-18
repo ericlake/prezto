@@ -23,3 +23,7 @@ fi
 if [[ -r ~/bin/global-auth-info.py ]]; then
   export TOKEN=$(global-auth-info.py -e prod-us -v)
 fi
+
+if [[ -r ~/.zsh_nova ]]; then
+  . ~/.zsh_nova
+fi

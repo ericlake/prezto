@@ -1,0 +1,9 @@
+export OS_AUTH_URL=https://identity.api.rackspacecloud.com/v2.0/
+export OS_AUTH_SYSTEM=rackspace
+export OS_REGION_NAME=IAD
+export OS_USERNAME=ericlake
+export OS_TENANT_NAME=816604
+export NOVA_RAX_AUTH=1
+export OS_PASSWORD=30ede6723e668d3048ce80d529690c94
+export OS_PROJECT_IDr=816604
+export OS_NO_CACHE=1
