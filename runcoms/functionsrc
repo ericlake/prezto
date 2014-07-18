@@ -1,0 +1,14 @@
+function syntunnel () {
+    TUNPID=$(ps -ef | grep 24800 | grep -v grep | awk '{ printf $2 }')
+    if [ ! -z $TUNPID ]; then
+        kill $TUNPID
+    fi
+    
+    SYNPID=$(ps -ef | grep synergyc | grep -v grep | awk '{ printf $2 }')
+    if [ ! -z $SYNPID ]; then
+        killall synergyc
+    fi
+
+    ssh -f -N -L localhost:24800:"$1":24800 "$1"
+    synergyc localhost
+}
