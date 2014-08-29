@@ -12,3 +12,12 @@ function syntunnel () {
     ssh -f -N -L localhost:24800:"$1":24800 "$1"
     synergyc localhost
 }
+
+function callup()
+{
+    if [ -e $2 ]; then
+        ldapsearch -h auth.edir.rackspace.com -x -b "OU=users,O=rackspace" "(cn=$1)"
+    else
+        ldapsearch -h auth.edir.rackspace.com -x -b "OU=users,O=rackspace" "($1=$2)"
+    fi
+}
