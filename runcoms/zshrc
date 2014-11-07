@@ -12,6 +12,8 @@ fi
 
 # Customize to your needs...
 
+export TERMINAL=gnome-terminal
+
 if [[ -r ~/.aliasrc ]]; then
   . ~/.aliasrc
 fi
