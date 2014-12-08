@@ -29,3 +29,5 @@ fi
 if [[ -r ~/.zsh_nova ]]; then
   . ~/.zsh_nova
 fi
+
+export SIGNUP_ENDPOINT=https://signup.api.rackspacecloud.com/v1

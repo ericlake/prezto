@@ -21,3 +21,8 @@ function callup()
         ldapsearch -h auth.edir.rackspace.com -x -b "OU=users,O=rackspace" "($1=$2)"
     fi
 }
+
+function groupsearch()
+{
+    ldapsearch -h auth.edir.rackspace.com -x -b "ou=POSIXGroups,o=rackspace" "(cn=$1)" | grep unique
+}
