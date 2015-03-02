@@ -1,3 +1,4 @@
 alias json='python -m json.tool'
 alias updatedw="rsync -av ~/JIRA bastion-n01.prod.dfw1.us.ci.rackspace.net:~/"
 alias getip="curl -s http://www.ipchicken.com | grep 'Address' -A 1 | tail -n 1 | awk '{ print \$1 }'"
+alias grep="grep --color=auto"
