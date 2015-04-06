@@ -23,7 +23,7 @@ if [[ -r ~/.functionsrc ]]; then
 fi
 
 if [[ -r ~/bin/global-auth-info.py ]]; then
-  export TOKEN=$(global-auth-info.py -e prod-us -v)
+  export TOKEN=$(~/bin/global-auth-info.py -e prod-us -v)
 fi
 
 if [[ -r ~/.zsh_nova ]]; then
