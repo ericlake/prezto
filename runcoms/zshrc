@@ -30,4 +30,8 @@ if [[ -r ~/.zsh_nova ]]; then
   . ~/.zsh_nova
 fi
 
+if [[ -r /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]]; then
+    source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+fi
+
 export SIGNUP_ENDPOINT=https://signup.api.rackspacecloud.com/v1
