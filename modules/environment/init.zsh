@@ -34,6 +34,7 @@ unsetopt HUP              # Don't kill jobs on shell exit.
 unsetopt CHECK_JOBS       # Don't report on jobs when shell exit.
 
 #
+<<<<<<< HEAD
 # Grep
 #
 
@@ -43,6 +44,8 @@ unsetopt CHECK_JOBS       # Don't report on jobs when shell exit.
 # fi
 
 #
+=======
+>>>>>>> upstream/master
 # Termcap
 #
 
@@ -55,4 +58,3 @@ if zstyle -t ':prezto:environment:termcap' color; then
   export LESS_TERMCAP_ue=$'\E[0m'          # Ends underline.
   export LESS_TERMCAP_us=$'\E[01;32m'      # Begins underline.
 fi
-
