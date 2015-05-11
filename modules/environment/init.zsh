@@ -34,7 +34,6 @@ unsetopt HUP              # Don't kill jobs on shell exit.
 unsetopt CHECK_JOBS       # Don't report on jobs when shell exit.
 
 #
-<<<<<<< HEAD
 # Grep
 #
 
@@ -44,8 +43,7 @@ unsetopt CHECK_JOBS       # Don't report on jobs when shell exit.
 # fi
 
 #
-=======
->>>>>>> upstream/master
+
 # Termcap
 #
 
