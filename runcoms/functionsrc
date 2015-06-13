@@ -44,12 +44,10 @@ function getinttoken()
 {
     ENDPOINT=https://identity-internal.api.rackspacecloud.com
     RACKER_SSO_USERNAME='eric6133'
-    #RACKER_SSO_PASSWORD=
-    #echo 'Enter Racker SSO Username:'
+    #echo 'Enter Racker SSO Username: '
     #read RACKER_SSO_USERNAME
-    echo 'Enter Racker SSO Password:'
+    echo 'Enter Racker SSO Password: '
     read -s RACKER_SSO_PASSWORD
-    #TOKEN=`curl -s -X POST $ENDPOINT/v2.0/tokens -d "{\"auth\":{\"RAX-AUTH:domain\": {\"name\": \"Rackspace\"},\"passwordCredentials\":{\"username\":\"$RACKER_SSO_USERNAME\",\"password\":\"$RACKER_SSO_PASSWORD\"}}}" -H "Content-type: application/json" -k | json | grep id | awk '{print $2}' | tr '\"\' ' '` ; TOKEN=`echo $TOKEN | awk {'print $1'}`
     TOKEN=$(curl -s -X POST $ENDPOINT/v2.0/tokens -d "{\"auth\":{\"RAX-AUTH:domain\": {\"name\": \"Rackspace\"},\"passwordCredentials\":{\"username\":\"$RACKER_SSO_USERNAME\",\"password\":\"$RACKER_SSO_PASSWORD\"}}}" -H "Content-type: application/json" | python -m json.tool | grep id | head -n 1 | awk '{print $2}' | tr -d '"')
     echo $TOKEN
 }
