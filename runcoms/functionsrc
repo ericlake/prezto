@@ -48,8 +48,8 @@ function getinttoken()
     #read RACKER_SSO_USERNAME
     echo 'Enter Racker SSO Password: '
     read -s RACKER_SSO_PASSWORD
-    TOKEN=$(curl -s -X POST $ENDPOINT/v2.0/tokens -d "{\"auth\":{\"RAX-AUTH:domain\": {\"name\": \"Rackspace\"},\"passwordCredentials\":{\"username\":\"$RACKER_SSO_USERNAME\",\"password\":\"$RACKER_SSO_PASSWORD\"}}}" -H "Content-type: application/json" | python -m json.tool | grep id | head -n 1 | awk '{print $2}' | tr -d '"')
-    echo $TOKEN
+    RTK=$(curl -s -X POST $ENDPOINT/v2.0/tokens -d "{\"auth\":{\"RAX-AUTH:domain\": {\"name\": \"Rackspace\"},\"passwordCredentials\":{\"username\":\"$RACKER_SSO_USERNAME\",\"password\":\"$RACKER_SSO_PASSWORD\"}}}" -H "Content-type: application/json" | python -m json.tool | grep id | head -n 1 | awk '{print $2}' | tr -d '"')
+    echo $RTK
 }
 
 function cleaniterm()
