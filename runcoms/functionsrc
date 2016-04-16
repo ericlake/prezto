@@ -44,11 +44,19 @@ function getinttoken()
 {
     ENDPOINT=https://identity-internal.api.rackspacecloud.com
     RACKER_SSO_USERNAME='eric6133'
-    #echo 'Enter Racker SSO Username: '
-    #read RACKER_SSO_USERNAME
     echo 'Enter Racker SSO Password: '
     read -s RACKER_SSO_PASSWORD
-    RTK=$(curl -s -X POST $ENDPOINT/v2.0/tokens -d "{\"auth\":{\"RAX-AUTH:domain\": {\"name\": \"Rackspace\"},\"passwordCredentials\":{\"username\":\"$RACKER_SSO_USERNAME\",\"password\":\"$RACKER_SSO_PASSWORD\"}}}" -H "Content-type: application/json" | python -m json.tool | grep id | head -n 1 | awk '{print $2}' | tr -d '"')
+    RTK=$(curl -s -X POST $ENDPOINT/v2.0/tokens -d "{\"auth\":{\"RAX-AUTH:domain\": {\"name\": \"Rackspace\"},\"passwordCredentials\":{\"username\":\"$RACKER_SSO_USERNAME\",\"password\":\"$RACKER_SSO_PASSWORD\"}}}" -H "Content-type: application/json" | jq -r '.access.token.id')
+    echo $RTK
+}
+
+function getstginttoken()
+{
+    ENDPOINT=https://staging.identity-internal.api.rackspacecloud.com
+    RACKER_SSO_USERNAME='eric6133'
+    echo 'Enter Racker SSO Password: '
+    read -s RACKER_SSO_PASSWORD
+    RTK=$(curl -s -X POST $ENDPOINT/v2.0/tokens -d "{\"auth\":{\"RAX-AUTH:domain\": {\"name\": \"Rackspace\"},\"passwordCredentials\":{\"username\":\"$RACKER_SSO_USERNAME\",\"password\":\"$RACKER_SSO_PASSWORD\"}}}" -H "Content-type: application/json" | jq -r '.access.token.id')
     echo $RTK
 }
 
@@ -57,17 +65,26 @@ function cleaniterm()
     sudo rm /private/var/log/asl/*.asl
 }
 
-function xrmulti()
+function xrwork()
 {
-    xrandr --output eDP1 --auto --output HDMI3 --mode 1680x1050 --above eDP1 --output HDMI2 --mode 1680x1050 --left-of HDMI3
+    #xrandr --output eDP1 --mode 1366x768 --output DP1-2 --mode 1680x1050 --above eDP1 --output DP1-1 --mode 1680x1050 --left-of DP1-2
+    sh $HOME/.screenlayout/work.sh
+    sh $HOME/.screenlayout/work.sh
+    sh $HOME/.screenlayout/work.sh
+    feh --randomize --bg-fill $HOME/.config/awesome/themes/backgrounds
 }
 
 function xrhome()
 {
-    xrandr --output eDP1 --auto --output HDMI1 --mode 1360x768 --right-of eDP1
+    #xrandr --output eDP1 --auto --output HDMI1 --mode 1360x768 --right-of eDP1
+    sh $HOME/.screenlayout/home.sh
+    sh $HOME/.screenlayout/home.sh
+    sh $HOME/.screenlayout/home.sh
+    feh --randomize --bg-fill $HOME/.config/awesome/themes/backgrounds
 }
 
-function xrauto()
+function xrlocal()
 {
-    xrandr --auto
+    #xrandr --auto
+    sh $HOME/.screenlayout/local.sh
 }
