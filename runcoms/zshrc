@@ -20,8 +20,8 @@ export GOPATH=$HOME/go-workspace
 #export PATH=$HOME/.virtualenvs/crapola/bin/:$PATH
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
-export PATH=$PATH:$HOME/.rbenv/bin
-eval "$(rbenv init -)"
+#export PATH=$PATH:$HOME/.rbenv/bin
+#eval "$(rbenv init -)"
 
 export SSO=eric6133
 export ANSIBLE_USER=eric6133
@@ -39,13 +39,13 @@ if [[ -r ~/.functionsrc ]]; then
   . ~/.functionsrc
 fi
 
-#if [[ -r ~/bin/global-auth-info.py ]]; then
-#  export TOKEN=$(~/bin/global-auth-info.py -e prod-us -v)
-#fi
-
-if [[ -r ~/.zsh_nova ]]; then
-  . ~/.zsh_nova
+if [[ -r ~/bin/global-auth-info.py ]]; then
+  export TOKEN=$(~/bin/global-auth-info.py -e prod-us -v)
 fi
+
+#if [[ -r ~/.zsh_nova ]]; then
+#  . ~/.zsh_nova
+#fi
 
 if [[ -r /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]]; then
     source /usr/share/virtualenvwrapper/virtualenvwrapper.sh

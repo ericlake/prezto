@@ -34,6 +34,8 @@ function cleaniterm()
 function fail()
 {
     echo -e "
+         \ /
+          |
  ▄██████████████▄▐█▄▄▄▄█▌
  ██████▌▄▌▄▐▐▌███▌▀▀██▀▀
  ████▄█▌▄▌▄▐▐▌▀███▄▄█▌
@@ -87,4 +89,31 @@ function xrlocal()
 {
     #xrandr --auto
     sh $HOME/.screenlayout/local.sh
+}
+
+function rcbutoken()
+{
+    RCBUTKN=$(curl -s "https://identity-internal.api.rackspacecloud.com/v2.0/tokens" -X POST -d @/home/elake/json/rcbu.json -H "Content-type: application/json" | jq -r '.access.token.id')
+}
+
+function cbudetails()
+{
+    rcbutoken
+    HOST=$1
+    AGENT_ID=$(curl -s https://ord.backup.api.rackspacecloud.com/v1.0/570053/user/agents -H "X-Auth-Token: $RCBUTKN" | jq '.[] | { aid: .MachineAgentId, name: .MachineName }  | select(.name | contains("'$HOST'")) | .aid')
+    curl -s https://ord.backup.api.rackspacecloud.com/v1.0/570053/backup-configuration/system/$AGENT_ID -H "X-Auth-Token: $RCBUTKN" | jq '.[]'
+}
+
+function cbuagentlist()
+{
+    rcbutoken
+    HOSTPORTION=$1
+    curl -s https://ord.backup.api.rackspacecloud.com/v1.0/570053/user/agents -H "X-Auth-Token: $RCBUTKN" | jq '.[] | { aid: .MachineAgentId, name: .MachineName }  | select(.name | contains("'$HOSTPORTION'"))'
+}
+
+function cbuagentdetails()
+{
+    rcbutoken
+    AGENT=$1
+    curl -s https://ord.backup.api.rackspacecloud.com/v1.0/570053/backup-configuration/system/$AGENT -H "X-Auth-Token: $RCBUTKN" | jq '.[]'
 }
