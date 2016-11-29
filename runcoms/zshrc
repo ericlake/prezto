@@ -5,6 +5,10 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+#disable gnome-ssh-askpass
+[ -n "$SSH_CONNECTION" ] && unset SSH_ASKPASS
+export GIT_ASKPASS=
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -23,8 +27,14 @@ export PATH=$PATH:$GOROOT/bin
 #export PATH=$PATH:$HOME/.rbenv/bin
 #eval "$(rbenv init -)"
 
+export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
 export SSO=eric6133
 export ANSIBLE_USER=eric6133
+
+export RSAPROXY_USERNAME=eric6133
 
 # Used for mvn commands when working with cloud feeds
 export SAXON_HOME=$HOME/saxon-license
@@ -51,3 +61,5 @@ if [[ -r /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]]; then
     source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 fi
 
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting

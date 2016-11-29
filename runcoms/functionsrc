@@ -22,9 +22,14 @@ function callup()
     fi
 }
 
-function groupsearch()
+function posixgroupsearch()
 {
     ldapsearch -h auth.edir.rackspace.com -x -b "ou=POSIXGroups,o=rackspace" "(cn=$1)" | grep unique
+}
+
+function groupsearch()
+{
+    ldapsearch -h auth.edir.rackspace.com -x -b "ou=Groups,o=rackspace" "(cn=$1)" | grep unique
 }
 
 function cleaniterm()
@@ -117,4 +122,15 @@ function cbuagentdetails()
     rcbutoken
     AGENT=$1
     curl -s https://ord.backup.api.rackspacecloud.com/v1.0/570053/backup-configuration/system/$AGENT -H "X-Auth-Token: $RCBUTKN" | jq '.[]'
+}
+
+function finder()
+{
+    if [[ -z "$1" ]]; then
+        echo "Error - Gotta search for something"
+        echo "usage: $0 Racker's name or other info here"
+        exit 1
+    fi
+    SEARCH="$(tr ' ' '+' <<< "$@")"
+    elinks -eval 'set connection.ssl.cert_verify = 0' -dump -dump-width $(tput cols) "https://finder.rackspace.net/mini.php?q=$SEARCH"
 }
