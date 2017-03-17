@@ -49,9 +49,7 @@ Updating
 
 Pull the latest changes and update submodules.
 
-    ```bash
     git pull && git submodule update --init --recursive
-    ```
     
 Usage
 -----
