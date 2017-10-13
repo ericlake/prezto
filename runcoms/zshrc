@@ -18,29 +18,6 @@ fi
 
 export TERMINAL=gnome-terminal
 
-# golang stuff
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/go-workspace
-#export PATH=$HOME/.virtualenvs/crapola/bin/:$PATH
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
-#export PATH=$PATH:$HOME/.rbenv/bin
-#eval "$(rbenv init -)"
-
-export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
-export SSO=eric6133
-export ANSIBLE_USER=eric6133
-
-export RSAPROXY_USERNAME=eric6133
-
-# Used for mvn commands when working with cloud feeds
-export SAXON_HOME=$HOME/saxon-license
-
-export SIGNUP_ENDPOINT=https://signup.api.rackspacecloud.com/v1
-
 if [[ -r ~/.aliasrc ]]; then
   . ~/.aliasrc
 fi
@@ -49,31 +26,20 @@ if [[ -r ~/.functionsrc ]]; then
   . ~/.functionsrc
 fi
 
-if [[ -r ~/bin/global-auth-info.py ]]; then
-  export TOKEN=$(~/bin/global-auth-info.py -e prod-us -v)
-fi
-
-#if [[ -r ~/.zsh_nova ]]; then
-#  . ~/.zsh_nova
-#fi
-
 if [[ -r /usr/share/virtualenvwrapper/virtualenvwrapper.sh ]]; then
     source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 fi
 
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-function powerline_precmd() {
-    PS1="$(~/bin/powerline-shell.py $? --shell zsh 2> /dev/null)"
-}
-
-function install_powerline_precmd() {
-  for s in "${precmd_functions[@]}"; do
-    if [ "$s" = "powerline_precmd" ]; then
-      return
-    fi
-  done
-  precmd_functions+=(powerline_precmd)
-}
+#function powerline_precmd() {
+#    PS1="$(~/bin/powerline-shell.py $? --shell zsh 2> /dev/null)"
+#}
+#
+#function install_powerline_precmd() {
+#  for s in "${precmd_functions[@]}"; do
+#    if [ "$s" = "powerline_precmd" ]; then
+#      return
+#    fi
+#  done
+#  precmd_functions+=(powerline_precmd)
+#}
 
